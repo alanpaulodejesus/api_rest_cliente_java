@@ -2,6 +2,12 @@ package projectApiSpring.projectApi.controllers;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.querydsl.QSort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,8 +45,8 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ClienteModel>>getAllCliente(){
-        return ResponseEntity.status(HttpStatus.OK).body(clienteService.findAll());
+    public ResponseEntity<Page<ClienteModel>>getAllCliente(@PageableDefault(page = 0,size = 5, sort = "codCiente", direction = Sort.Direction.ASC)Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(clienteService.findAll(pageable));
     }
 
     @GetMapping("/{id}")
@@ -68,9 +74,11 @@ public class ClienteController {
         if(!clienteModelOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente not found.");
         }
+        if(clienteService.existsByCPF(clienteDto.getCPF())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: CPF already existents!");
+        }
         var clienteModel =  clienteModelOptional.get();
         clienteModel.setCPF(clienteDto.getCPF());
-        //if (clienteDto.getCPF().is) VALIDAR INSERIR UM CPF JA CADASTRADO NO BANCO
         clienteModel.setNome(clienteDto.getNome());
         clienteModel.setIdade(clienteDto.getIdade());
         return ResponseEntity.status(HttpStatus.OK).body(clienteService.save(clienteModel));

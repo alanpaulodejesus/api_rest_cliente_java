@@ -1,5 +1,7 @@
 package projectApiSpring.projectApi.services;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projectApiSpring.projectApi.models.ClienteModel;
@@ -27,8 +29,8 @@ public class ClienteService {
         return clienteRepository.existsByCPF(cpf);
     }
 
-    public List<ClienteModel> findAll() {
-        return clienteRepository.findAll();
+    public Page<ClienteModel> findAll(Pageable pageable) {
+        return clienteRepository.findAll(pageable);
     }
 
     public Optional<ClienteModel> findById(UUID uuid) {
