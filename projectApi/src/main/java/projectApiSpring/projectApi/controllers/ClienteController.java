@@ -1,5 +1,6 @@
 package projectApiSpring.projectApi.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
@@ -31,7 +32,7 @@ public class ClienteController {
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
-
+    //@Operation(summary = "Este é um cadastros de clientes")
     @PostMapping
     public ResponseEntity<Object> saveCliente(@RequestBody @Valid ClienteDto clienteDto){
 
