@@ -32,7 +32,6 @@ public class ClienteController {
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
-    //@Operation(summary = "Este é um cadastros de clientes")
     @PostMapping
     public ResponseEntity<Object> saveCliente(@RequestBody @Valid ClienteDto clienteDto){
 
@@ -84,5 +83,4 @@ public class ClienteController {
         clienteModel.setIdade(clienteDto.getIdade());
         return ResponseEntity.status(HttpStatus.OK).body(clienteService.save(clienteModel));
     }
-    //http://localhost:8080/h2-console/login.jsp
 }
