@@ -13,6 +13,7 @@ Passo a passo:
 - Após realização do build, Maven realizará todos os imports necessários
 - Para dar start na aplicação, acione "Run" na classe "ProjectApiApplication"
 
-Observação 1: Este projeto utiliza o banco em memória H2.
-Observação 2: Após execução do Spring Boot, acesse a documentação da Api Rest em: http://localhost:8081/swagger-ui/index.html 
-Observação 3: Para acessar o banco em memória, acesse http://localhost:8081/h2-console/login.jsp
+Observações: 
+- Este projeto utiliza o banco em memória H2.
+- Após execução do Spring Boot, acesse a documentação da Api Rest em: http://localhost:8081/swagger-ui/index.html 
+- Para acessar o banco em memória, acesse http://localhost:8081/h2-console/login.jsp
