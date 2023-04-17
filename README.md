@@ -1,6 +1,18 @@
 # api_rest_cliente_java
-This is a api rest created using SpringBoot e Java. 
-Its has the methods POST, GET, PUT and DELETE. 
-To using the application is necessary only to do download of project. The project it has a memory database H2.
 
-After to start project in class "projectApiApplication", access http://localhost:8081/swagger-ui/index.html for Api documention.
+Esta é uma Api Rest criada utilizando Java e Spring Boot.
+Ela possui os seguintes métodos: POST, GET, PUT e DELETE.
+
+Para utilizar o projeto é necessário ter instalado em sua máquina:
+- Java JDK
+- MAVEN
+
+Passo a passo:
+- Faça um clone do projeto
+- Abra o projeto em sua IDE
+- Após realização do build, Maven realizará todos os imports necessários
+- Para dar start na aplicação, acione "Run" na classe "ProjectApiApplication"
+
+Observação 1: Este projeto utiliza o banco em memória H2.
+Observação 2: Após execução do Spring Boot, acesse a documentação da Api Rest em: http://localhost:8081/swagger-ui/index.html 
+Observação 3: Para acessar o banco em memória, acesse http://localhost:8081/h2-console/login.jsp
